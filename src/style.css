@@ -49,24 +49,35 @@ table {
 @@@@@@@@@@@@@@@@@
 */
 
+#content {
+	display: flex;
+	flex-direction: column;
+	margin: 5vw;
+}
 #listItem {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 800;
     color: blue;
-    white-space: pre-wrap;
-    margin-bottom: 2rem;
+	border: 3px solid green;
+	background-color: rgb(227, 230, 80);
+	margin: 5vw;
 }
 
 #taskListItem {
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 500;
     color: blueviolet;
     margin-left: 2rem;
 }
 
-#taskListMain {
-    font-size: 2.5rem;
+h3 {
+    font-size: 1.5rem;
     font-weight: 650;
     color: brown;
-    margin-left: 1rem;
+	margin-left: 1rem;
+}
+
+#projectContainer {
+	border: 3px solid red;
+	background-color: aqua;
 }
