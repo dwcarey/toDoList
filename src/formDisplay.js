@@ -1,8 +1,11 @@
+import { dataController } from "./dataController";
+
 function displayAddForm() {
     const form = document.createElement('form');
     const content = document.getElementById('content');
 
     // Create a label for the project name input field
+    
     const projectNameLabel = document.createElement('label');
     projectNameLabel.textContent = 'Project Name: ';
     form.appendChild(projectNameLabel);
@@ -90,7 +93,6 @@ function displayAddForm() {
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
     submitButton.textContent = 'Submit';
-    //add event listener here
     form.appendChild(submitButton);
     
 
@@ -101,6 +103,19 @@ function displayAddForm() {
     overlay.id = 'overlay';
     const body = document.getElementById('body');
     body.appendChild(overlay);
+
+    form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const projectName = projectNameInput.value;
+        const projectDue = projectDueDateInput.value;
+        const taskName = taskNameInput.value;
+        const taskDue = taskDueDateInput.value;
+        const taskPriority = taskPrioritySelect.value;
+        const taskNotes = taskNotesInput.value;
+        dataController(projectName, projectDue, taskName, taskDue, taskPriority, taskNotes);
+        form.remove();
+        overlay.remove();
+    })
 }
 
 export { displayAddForm };

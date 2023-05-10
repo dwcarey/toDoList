@@ -47,8 +47,13 @@ function createProjectListItem(project) {
 
 function projectListLoad() {
   const content = document.getElementById('content');
+  const oldList = document.getElementById('projectContainer');
+  if (oldList !== null) {
+    oldList.remove();
+  };
   const projectsList = document.createElement('ul');
   projectsList.id = 'projectContainer';
+
 
   for (let i = 0; i < projects.length; i++) {
     const project = projects[i];
