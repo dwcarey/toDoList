@@ -1,10 +1,12 @@
+import format from "date-fns/format";
 import { Task } from "./tasks";
+
 
 const projects = [];
 class Project {
     constructor(name, due) {
         this.name = name;
-        this.due = due;
+        this.due = format(new Date(due), 'dd/MM/yyyy');
         this.tasks = [];
         projects.push(this);
     }

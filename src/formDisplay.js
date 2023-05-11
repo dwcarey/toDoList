@@ -14,6 +14,7 @@ function displayAddForm() {
     const projectNameInput = document.createElement('input');
     projectNameInput.type = 'text';
     projectNameInput.name = 'projectName';
+    projectNameInput.required = true;
     projectNameInput.maxLength = 25; // set max length to 25 characters
     form.appendChild(projectNameInput);
     
@@ -25,6 +26,7 @@ function displayAddForm() {
     // Create a date input field for the project due date
     const projectDueDateInput = document.createElement('input');
     projectDueDateInput.type = 'date';
+    projectDueDateInput.required = true;
     projectDueDateInput.name = 'projectDueDate';
     form.appendChild(projectDueDateInput);
     
@@ -37,6 +39,7 @@ function displayAddForm() {
     const taskNameInput = document.createElement('input');
     taskNameInput.type = 'text';
     taskNameInput.name = 'taskName';
+    taskNameInput.required = true;
     taskNameInput.maxLength = 40; // set max length to 40 characters
     form.appendChild(taskNameInput);
     
@@ -48,6 +51,7 @@ function displayAddForm() {
     // Create a date input field for the task due date
     const taskDueDateInput = document.createElement('input');
     taskDueDateInput.type = 'date';
+    taskDueDateInput.required = true;
     taskDueDateInput.name = 'taskDueDate';
     form.appendChild(taskDueDateInput);
     
@@ -85,6 +89,7 @@ function displayAddForm() {
     // Create a text input field for the task notes
     const taskNotesInput = document.createElement('input');
     taskNotesInput.type = 'text';
+    taskNotesInput.required = true;
     taskNotesInput.name = 'taskNotes';
     taskNotesInput.maxLength = 250; // set max length to 250 characters
     form.appendChild(taskNotesInput);
