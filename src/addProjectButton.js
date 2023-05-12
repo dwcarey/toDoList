@@ -1,4 +1,4 @@
-import { displayAddForm } from "./formDisplay";
+import { projectFormDisplay } from "./projectFormDisplay";
 
 function addProjectButton() {
     const content = document.getElementById('content');
@@ -6,7 +6,7 @@ function addProjectButton() {
     addButton.id = 'addButton';
     addButton.textContent = 'Add Project';
     addButton.addEventListener('click', (e) => {
-        displayAddForm();
+        projectFormDisplay();
     })
     content.appendChild(addButton);
 }
