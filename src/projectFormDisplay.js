@@ -4,8 +4,30 @@ import { Task } from "./tasks";
 
 function projectFormDisplay() {
   const form = document.createElement('form');
+  const overlay = document.createElement('div');
+  overlay.id = 'overlay';
   form.id = 'projectForm';
   const content = document.getElementById('content');
+  content.appendChild(overlay);
+
+  //create reset button
+  const resetButton = document.createElement('button');
+  resetButton.id = 'resetButton';
+  resetButton.type = 'reset';
+  resetButton.textContent = 'Reset';
+  form.appendChild(resetButton);
+
+  //create close form button
+  const closeButton = document.createElement('button');
+  closeButton.id = 'closeButton';
+  closeButton.type = 'button';
+  closeButton.textContent = 'Close';
+
+  closeButton.addEventListener('click', (e) => {
+    form.remove();
+    overlay.remove();
+  })
+  form.appendChild(closeButton);
 
   // Create a label for the project name input field
   const projectNameLabel = document.createElement('label');
@@ -32,14 +54,7 @@ function projectFormDisplay() {
   projectDueDateInput.name = 'projectDueDate';
   form.appendChild(projectDueDateInput);
 
-  // Create a submit button
-  const submitButton = document.createElement('button');
-  submitButton.id = 'submitButton';
-  submitButton.type = 'submit';
-  submitButton.textContent = 'Submit';
-  form.appendChild(submitButton);
-
-  // Create an empty array to store task input fields
+ // Create an empty array to store task input fields
   const taskInputs = [];
 
   // Create a button to add tasks dynamically
@@ -47,12 +62,21 @@ function projectFormDisplay() {
   addTaskButton.id = 'addTaskButton';
   addTaskButton.type = 'button';
   addTaskButton.textContent = 'Add Task';
+ 
   form.appendChild(addTaskButton);
+  // Create a submit button
+  const submitButton = document.createElement('button');
+  submitButton.id = 'submitButton';
+  submitButton.type = 'submit';
+  submitButton.textContent = 'Submit';
+  form.appendChild(submitButton);
+
+ 
 
 
   addTaskButton.addEventListener('click', () => {
     const taskIndex = taskInputs.length + 1;
-
+    submitButton.remove();
     // Create a div to hold the task input fields
     const taskDiv = document.createElement('div');
     taskDiv.id = `taskDiv${taskIndex}`;
@@ -82,9 +106,9 @@ function projectFormDisplay() {
     taskDueDateInput.name = `taskDueDate${taskIndex}`;
     taskDiv.appendChild(taskDueDateInput);
 
-    // Create a label for the task priority input field
-    const taskPriorityLabel = document.createElement('label');
-    taskPriorityLabel.textContent = `Task ${taskIndex}`;
+// Create a label for the task priority input field
+const taskPriorityLabel = document.createElement('label');
+taskPriorityLabel.textContent = `Task ${taskIndex}`;
 
 // Create a select input field for the task priority
 const taskPrioritySelect = document.createElement('select');
@@ -100,6 +124,8 @@ for (const option of priorityOptions) {
   taskPrioritySelect.appendChild(priorityOption);
 }
 
+// Append the task priority label and select to the taskDiv
+taskDiv.appendChild(taskPriorityLabel);
 taskDiv.appendChild(taskPrioritySelect);
 
 // Create a label for the task notes input field
@@ -114,7 +140,10 @@ taskNotesTextarea.rows = 4;
 taskDiv.appendChild(taskNotesTextarea);
 
 // Add the task input fields to the form
-form.insertBefore(taskDiv, addTaskButton, submitButton);
+form.appendChild(taskDiv);
+form.appendChild(addTaskButton);
+form.appendChild(submitButton);
+
 
 // Store the task input fields in the taskInputs array
 taskInputs.push({
@@ -131,7 +160,7 @@ content.appendChild(form);
 // Handle form submission
 form.addEventListener('submit', (event) => {
 event.preventDefault();
-
+overlay.remove();
 // Retrieve project details from the form
 const projectName = projectNameInput.value;
 const projectDueDate = projectDueDateInput.value;

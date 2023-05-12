@@ -36,16 +36,16 @@ function taskFormDisplay() {
             taskDueDateInput.id = 'taskDueDate';
             form.appendChild(taskDueDateInput);
             
-            // Create a label for the task priority dropdown
-            const taskPriorityLabel = document.createElement('label');
-            taskPriorityLabel.textContent = 'Task Priority: ';
-            form.appendChild(taskPriorityLabel);
-            
-            // Create a select dropdown for the task priority
-        
-            taskPrioritySelect.name = 'taskPriority';
-            taskPrioritySelect.id = 'taskPriority';
-            form.appendChild(taskPrioritySelect);
+// Create a label for the task priority dropdown
+const taskPriorityLabel = document.createElement('label');
+taskPriorityLabel.textContent = 'Task Priority: ';
+form.appendChild(taskPriorityLabel);
+
+// Create a select dropdown for the task priority
+taskPrioritySelect.name = 'taskPriority';
+taskPrioritySelect.id = 'taskPriority';
+form.appendChild(taskPrioritySelect);
+
             
             // Create three options for the task priority dropdown
             const lowPriorityOption = document.createElement('option');

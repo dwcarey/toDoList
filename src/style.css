@@ -107,3 +107,9 @@ form {
 	left: 0%;
 	transform: translate(-0%, -0%);
 }
+
+div[id^=taskDiv] {
+	grid-column: span 2;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
