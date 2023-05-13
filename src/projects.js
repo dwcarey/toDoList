@@ -17,6 +17,7 @@ class Project {
     
 }
 
+
 // Create new projects
 const project1 = new Project('Phoenix Rising', 'May 15, 2023');
 const project2 = new Project('Quantum Leap', 'May 30, 2023');
@@ -49,6 +50,8 @@ project6.addTask(task8);
 project7.addTask(task6);
 project8.addTask(task7);
 project8.addTask(task8);
+
+
 
 
 export { Project, projects };
