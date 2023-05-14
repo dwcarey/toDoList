@@ -43,7 +43,13 @@ function createProjectForm(projectData = null) {
   projectDueDateInput.type = 'date';
   projectDueDateInput.required = true;
   projectDueDateInput.name = 'projectDueDate';
-  projectDueDateInput.value = projectData && projectData.due ? projectData.due : '';
+  if (projectData && projectData.due) {
+    const originalDate = projectData.due;
+    const dateComponents = originalDate.split('/');
+    const rearrangedDate = `${dateComponents[2]}-${dateComponents[1]}-${dateComponents[0]}`;
+    projectDueDateInput.value = rearrangedDate;
+  }
+
   form.appendChild(projectDueDateInput);
 
   const taskInputs = [];

@@ -1,5 +1,5 @@
 import { projects } from './projects';
-import { createProjectForm } from './projectFormDisplay';
+import { createProjectForm } from './projectFormGeneration';
 
 function createTaskList(project) {
   const taskList = document.createElement('ul');
@@ -84,7 +84,7 @@ function createProjectListItem(project, buttonID) {
     if (e.target && e.target.id.startsWith('Edit ')) {
       const index = e.target.id.split(' ')[1];
       const selectedProject = projects[index];
-      projectFormDisplay(selectedProject);
+      createProjectForm(selectedProject);
     }
   });
 
