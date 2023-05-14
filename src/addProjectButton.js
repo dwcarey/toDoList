@@ -1,4 +1,4 @@
-import { projectFormDisplay } from "./projectFormDisplay";
+import { createProjectForm } from "./projectFormGeneration";
 
 function addProjectButton() {
     const content = document.getElementById('content');
@@ -6,7 +6,7 @@ function addProjectButton() {
     addButton.id = 'addButton';
     addButton.textContent = 'Add Project';
     addButton.addEventListener('click', (e) => {
-        projectFormDisplay();
+        createProjectForm();
     })
     content.appendChild(addButton);
 }

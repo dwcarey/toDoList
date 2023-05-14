@@ -1,5 +1,5 @@
 import { projects } from './projects';
-import { projectFormDisplay } from './projectFormDisplay';
+import { createProjectForm } from './projectFormDisplay';
 
 function createTaskList(project) {
   const taskList = document.createElement('ul');
