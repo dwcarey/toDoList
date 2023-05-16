@@ -4,16 +4,9 @@ class ToDoList {
         this.projects = [];
     }
 
-    setProjects(projects) {
-        this.projects = projects;
-    }
-
-    getProjects() {
-        return this.projects;
-    }
-
     addProject(newProject) {
         this.projects.push(newProject);
+        return this.projects;
     }
 
     deleteProject(projectIndex) {

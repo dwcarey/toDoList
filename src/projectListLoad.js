@@ -1,4 +1,5 @@
 
+import { createProjectForm } from './creatProjectForm';
 
 function projectListLoad(toDoList) {
   const content = document.getElementById('content');
@@ -9,6 +10,7 @@ function projectListLoad(toDoList) {
   addProjectButton.textContent = 'Add Project';
   addProjectButton.id = 'addProjectButton';
   addProjectButton.classList.add('addProjectButton');
+  addProjectButton.type = 'button';
   content.appendChild(addProjectButton);
 
   for (let i = 0; i < toDoList.projects.length; i += 1) {
@@ -27,11 +29,13 @@ function projectListLoad(toDoList) {
     deleteProjectButton.textContent = 'Delete Project';
     deleteProjectButton.id = `deleteProject-${i}`;
     deleteProjectButton.className = 'deleteProjectButton';
+    deleteProjectButton.type = 'button';
 
     const editProjectButton = document.createElement('button');
     editProjectButton.textContent = 'Edit Project';
     editProjectButton.id = `editProject-${i}`;
     editProjectButton.className = 'editProjectButton';
+    editProjectButton.type = 'button';
 
     listItem.appendChild(deleteProjectButton);
     listItem.appendChild(editProjectButton);
@@ -46,6 +50,7 @@ function projectListLoad(toDoList) {
             deleteTaskButton.textContent = 'Delete Task';
             deleteTaskButton.id = `deleteTask-${i}/${j}`;
             deleteTaskButton.className = 'deleteTaskButton';
+            deleteTaskButton.type = 'button';
 
             const taskName = document.createElement('h3');
             taskName.textContent = `${project.tasks[j].name}`;
@@ -77,7 +82,8 @@ function projectListLoad(toDoList) {
   function addEventListeners() {
     const addProjectButtonListener = document.getElementById('addProjectButton');
     addProjectButtonListener.addEventListener('click', (e) => {
-        console.log(addProjectButtonListener);
+        createProjectForm(toDoList);
+
     });
 
     const deleteProjectButtons = document.querySelectorAll('button.deleteProjectButton');
