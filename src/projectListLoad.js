@@ -1,7 +1,8 @@
 
 
-function projectListLoad(projects) {
+function projectListLoad(toDoList) {
   const content = document.getElementById('content');
+  content.replaceChildren();
   const addProjectButton = document.createElement('button');
   const projectsList = document.createElement('ul');
 
@@ -10,11 +11,11 @@ function projectListLoad(projects) {
   addProjectButton.classList.add('addProjectButton');
   content.appendChild(addProjectButton);
 
-  for (let i = 0; i < projects.length; i += 1) {
+  for (let i = 0; i < toDoList.projects.length; i += 1) {
     const listItem = document.createElement('li');
     listItem.id = 'listItem';
 
-    const project = projects[i];
+    const project = toDoList.projects[i];
 
     const projectName = document.createElement('h2');
     projectName.textContent = `${project.name}`;
@@ -37,7 +38,7 @@ function projectListLoad(projects) {
     listItem.appendChild(projectName);
     listItem.appendChild(projectDueDate);
 
-    for (let j = 0; j < projects[i].tasks.length; j +=1) {
+    for (let j = 0; j < toDoList.projects[i].tasks.length; j +=1) {
         const taskListItem = document.createElement('ul');
         taskListItem.id = 'taskListMain';
 
@@ -72,6 +73,42 @@ function projectListLoad(projects) {
     projectsList.appendChild(listItem);
   }
   content.appendChild(projectsList);
+
+  function addEventListeners() {
+    const addProjectButtonListener = document.getElementById('addProjectButton');
+    addProjectButtonListener.addEventListener('click', (e) => {
+        console.log(addProjectButtonListener);
+    });
+
+    const deleteProjectButtons = document.querySelectorAll('button.deleteProjectButton');
+    deleteProjectButtons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            const projectIndex = button.id.split('-')[1];
+            toDoList.deleteProject(projectIndex); 
+            projectListLoad(toDoList);         
+        });
+    });
+
+    const editProjectButtons = document.querySelectorAll('button.editProjectButton');
+    editProjectButtons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            console.log(button);
+        });
+    });
+
+    const deleteTaskButtons = document.querySelectorAll('button.deleteTaskButton');
+    deleteTaskButtons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+          const projectAndTaskIndex = button.id.split('-')[1];
+          const projectIndex = projectAndTaskIndex.split('/')[0];
+          const taskIndex = projectAndTaskIndex.split('/')[1];
+          toDoList.deleteTask(projectIndex, taskIndex);
+          projectListLoad(toDoList);  
+        });
+    });
+}
+
+addEventListeners();
 };
 
 export { projectListLoad };

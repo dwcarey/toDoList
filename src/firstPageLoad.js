@@ -1,5 +1,5 @@
 import { projectListLoad } from "./projectListLoad";
-import { addEventListeners } from "./addEventListeners";
+
 import { ToDoList } from './toDoList';
 import { Task } from './tasks';
 import { Project } from './projects';
@@ -48,8 +48,10 @@ toDoList.addProject(project6);
 toDoList.addProject(project7);
 toDoList.addProject(project8);
 
-    projectListLoad(toDoList.projects);
-    addEventListeners();
+    projectListLoad(toDoList);
+
 }
+
+
 
 export { firstPageLoad };

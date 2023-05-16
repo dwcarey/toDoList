@@ -1,3 +1,5 @@
+import { ToDoList } from "./toDoList";
+
 function addEventListeners() {
     const addProjectButton = document.getElementById('addProjectButton');
     addProjectButton.addEventListener('click', (e) => {
@@ -7,7 +9,8 @@ function addEventListeners() {
     const deleteProjectButtons = document.querySelectorAll('button.deleteProjectButton');
     deleteProjectButtons.forEach((button) => {
         button.addEventListener('click', (e) => {
-            console.log(button);
+            const projectIndex = button.id.split('-')[1];
+            toDoList.deleteProject(projectIndex);            
         });
     });
 
