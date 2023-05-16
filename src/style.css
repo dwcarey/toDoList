@@ -84,7 +84,7 @@ h3 {
 	background-color: aqua;
 }
 
-form {
+#projectForm {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -112,4 +112,10 @@ div[id^=taskDiv] {
 	grid-column: span 2;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+}
+
+.taskForm {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column: span 2;
 }
