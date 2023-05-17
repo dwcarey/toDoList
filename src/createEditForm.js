@@ -1,13 +1,16 @@
 import { ToDoList } from "./toDoList";
 import { Project } from "./projects";
+import { Task } from "./tasks";
 import { projectListLoad } from "./projectListLoad";
-import { createTaskForm} from './createTaskForm';
 
-function createProjectForm(toDoList) {
-    let tasksCounter = 0;
+function createEditForm(projectIndex, toDoList) {
+    const selectedProject = toDoList.projects[projectIndex];
+
+    let tasksCounter = selectedProject.tasks.length;
+
     const content = document.getElementById('content');
     const projectForm = document.createElement('form');
-    projectForm.id = 'projectForm';
+    projectForm.id = 'editProjectForm';
 
     //reset button, resets the form inputs
     const resetButton = document.createElement('button');
@@ -30,6 +33,7 @@ function createProjectForm(toDoList) {
     projectNameInput.type = 'text';
     projectNameInput.maxLength = 25;
     projectNameInput.id = 'projectNameInput';
+    projectNameInput.value = selectedProject.name;
 
     //project due date label and date input
     const projectDueLabel = document.createElement('label');
@@ -38,6 +42,11 @@ function createProjectForm(toDoList) {
     const projectDueInput = document.createElement('input');
     projectDueInput.type = 'date';
     projectDueInput.id = 'projectDueInput';
+    const day = selectedProject.due.split('/')[0];
+    const month = selectedProject.due.split('/')[1];
+    const year = selectedProject.due.split('/')[2];
+    const newProjectDate = `${year}-${month}-${day}`;
+    projectDueInput.value = newProjectDate;
 
     //add task button, will generate a task form
     const addTaskButton = document.createElement('button');
@@ -45,6 +54,7 @@ function createProjectForm(toDoList) {
     addTaskButton.type = 'button';
     addTaskButton.addEventListener('click', (e) => {
         tasksCounter += 1;
+        //createEditTaskForm, same
         createTaskForm(toDoList, tasksCounter);
     })
 
@@ -55,7 +65,7 @@ function createProjectForm(toDoList) {
     submitButton.addEventListener('click', (e) =>{
         e.preventDefault();
         const newProject = new Project(projectNameInput.value, projectDueInput.value);
-        toDoList.addProject(newProject);
+        toDoList.editProject(projectIndex, newProject);
         projectForm.remove();
         projectListLoad(toDoList);
     })
@@ -72,6 +82,10 @@ function createProjectForm(toDoList) {
 
     content.appendChild(projectForm);
 
+
+
+
+    console.log(selectedProject);
 }
 
-export { createProjectForm };
+export { createEditForm };

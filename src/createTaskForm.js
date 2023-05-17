@@ -70,8 +70,13 @@ function createTaskForm(toDoList, tasksCounter) {
         e.preventDefault();
         const projectNameInput = document.querySelector('#projectNameInput').value;
         const projectDueInput = document.querySelector('#projectDueInput').value;
+        const dayP = projectDueInput.split('/')[0];
+        const monthP = projectDueInput.split('/')[1];
+        const yearP = projectDueInput.split('/')[2];
+        const newProjectDate = `${yearP}-${monthP}-${dayP}`;
 
-        const newProject = new Project(projectNameInput, projectDueInput);
+
+        const newProject = new Project(projectNameInput, newProjectDate);
 
         for (let i = 1; i <= tasksCounter; i+=1) {
             const taskNameData = document.getElementById(`taskName-${i}`).value;
@@ -82,10 +87,10 @@ function createTaskForm(toDoList, tasksCounter) {
             const day = taskDueData.split('/')[0];
             const month = taskDueData.split('/')[1];
             const year = taskDueData.split('/')[2];
-            const shuffledDate = `${year}-${month}-${day}`;
+            const newTaskDate = `${year}-${month}-${day}`;
             const newTask = new Task(
                 taskNameData, 
-                shuffledDate, 
+                newTaskDate, 
                 taskPriorityData,
                 taskNotesData)
             newProject.addTask(newTask);
@@ -93,7 +98,7 @@ function createTaskForm(toDoList, tasksCounter) {
         toDoList.addProject(newProject);
         projectForm.remove();
         projectListLoad(toDoList);
-        console.log(toDoList);
+
     })
 
     //append this append that

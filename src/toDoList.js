@@ -19,6 +19,11 @@ class ToDoList {
         return this.projects;
     }
 
+    editProject(projectIndex, newProject) {
+        this.projects.splice(projectIndex, 1, newProject);
+        return this.projects;
+    }
+
 }
 
 export { ToDoList };

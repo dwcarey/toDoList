@@ -1,5 +1,6 @@
 
 import { createProjectForm } from './creatProjectForm';
+import { createEditForm } from './createEditForm';
 
 function projectListLoad(toDoList) {
   const content = document.getElementById('content');
@@ -98,7 +99,8 @@ function projectListLoad(toDoList) {
     const editProjectButtons = document.querySelectorAll('button.editProjectButton');
     editProjectButtons.forEach((button) => {
         button.addEventListener('click', (e) => {
-            console.log(button);
+            const editProjectIndex = button.id.split('-')[1];
+            createEditForm(editProjectIndex, toDoList);
         });
     });
 
