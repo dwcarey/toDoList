@@ -4,6 +4,7 @@ import { projectListLoad } from "./projectListLoad";
 import { createTaskForm} from './createTaskForm';
 
 function createProjectForm(toDoList) {
+    let editing = false;
     let tasksCounter = 0;
     const content = document.getElementById('content');
     const projectForm = document.createElement('form');
@@ -45,7 +46,7 @@ function createProjectForm(toDoList) {
     addTaskButton.type = 'button';
     addTaskButton.addEventListener('click', (e) => {
         tasksCounter += 1;
-        createTaskForm(toDoList, tasksCounter);
+        createTaskForm(toDoList, tasksCounter, editing);
     })
 
     //submit button, will submit form returning a Project object to projectlistload

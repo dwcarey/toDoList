@@ -3,12 +3,16 @@ import { Project } from "./projects";
 import { Task } from "./tasks";
 import { projectListLoad } from "./projectListLoad";
 
-function createTaskForm(toDoList, tasksCounter) {
-    const projectForm = document.getElementById('projectForm');
+function createTaskForm(toDoList, tasksCounter, editing) {
+        let projectForm = document.getElementById('editProjectForm');
+
     const taskForm = document.createElement('form');
     taskForm.id = `taskForm-${tasksCounter}`;
     taskForm.classList.add('taskForm');
 
+    if (editing===false){
+        projectForm = document.getElementById('projectForm');
+        projectForm = document.getElementById('projectForm');
     const oldSubmitButton = document.getElementById('submitButton');
     const oldTaskSubmitButton = document.getElementById('taskSubmitButton');
 
@@ -22,8 +26,47 @@ function createTaskForm(toDoList, tasksCounter) {
     }
     else if (oldTaskSubmitButton) {
         projectForm.replaceChild(taskSubmitButton, oldTaskSubmitButton);
-    }
+    }}
 
+    if (editing === false){
+    //new submit button to handle both project and task creation
+    taskSubmitButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectNameInput = document.querySelector('#projectNameInput').value;
+        const projectDueInput = document.querySelector('#projectDueInput').value;
+        const dayP = projectDueInput.split('/')[0];
+        const monthP = projectDueInput.split('/')[1];
+        const yearP = projectDueInput.split('/')[2];
+        const newProjectDate = `${yearP}-${monthP}-${dayP}`;
+
+
+        const newProject = new Project(projectNameInput, newProjectDate);
+
+        for (let i = 1; i <= tasksCounter; i+=1) {
+            const taskNameData = document.getElementById(`taskName-${i}`).value;
+            const taskDueData = document.getElementById(`taskDueInput-${i}`).value;
+            const taskPriorityData = document.getElementById(`taskPriority-${i}`).value;
+            const taskNotesData = document.getElementById(`taskNote-${i}`).value;
+
+            const day = taskDueData.split('/')[0];
+            const month = taskDueData.split('/')[1];
+            const year = taskDueData.split('/')[2];
+            const newTaskDate = `${year}-${month}-${day}`;
+            const newTask = new Task(
+                taskNameData, 
+                newTaskDate, 
+                taskPriorityData,
+                taskNotesData)
+            newProject.addTask(newTask);
+        }
+        toDoList.addProject(newProject);
+        projectForm.remove();
+        projectListLoad(toDoList);
+    })
+
+
+
+}
     //taskname text max25 with label, id'ed with taskscounter
     const taskNameLabel = document.createElement('label');
     taskNameLabel.textContent = `Task ${tasksCounter} Name:`;
@@ -64,42 +107,6 @@ function createTaskForm(toDoList, tasksCounter) {
     taskNotesInput.type = 'textarea';
     taskNotesInput.maxLength = 100;
     taskNotesInput.id = `taskNote-${tasksCounter}`;
-
-    //new submit button to handle both project and task creation
-    taskSubmitButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        const projectNameInput = document.querySelector('#projectNameInput').value;
-        const projectDueInput = document.querySelector('#projectDueInput').value;
-        const dayP = projectDueInput.split('/')[0];
-        const monthP = projectDueInput.split('/')[1];
-        const yearP = projectDueInput.split('/')[2];
-        const newProjectDate = `${yearP}-${monthP}-${dayP}`;
-
-
-        const newProject = new Project(projectNameInput, newProjectDate);
-
-        for (let i = 1; i <= tasksCounter; i+=1) {
-            const taskNameData = document.getElementById(`taskName-${i}`).value;
-            const taskDueData = document.getElementById(`taskDueInput-${i}`).value;
-            const taskPriorityData = document.getElementById(`taskPriority-${i}`).value;
-            const taskNotesData = document.getElementById(`taskNote-${i}`).value;
-
-            const day = taskDueData.split('/')[0];
-            const month = taskDueData.split('/')[1];
-            const year = taskDueData.split('/')[2];
-            const newTaskDate = `${year}-${month}-${day}`;
-            const newTask = new Task(
-                taskNameData, 
-                newTaskDate, 
-                taskPriorityData,
-                taskNotesData)
-            newProject.addTask(newTask);
-        }
-        toDoList.addProject(newProject);
-        projectForm.remove();
-        projectListLoad(toDoList);
-
-    })
 
     //append this append that
     taskForm.appendChild(taskNameLabel);

@@ -18,14 +18,14 @@ const project7 = new Project('Project Athena', 'August 15, 2023');
 const project8 = new Project('Zephyr', 'September 1, 2023');
 
 // Create new tasks
-const task1 = new Task('Task 1', 'May 13, 2023', 'Medium', 'Do this task first');
+const task1 = new Task('Task 1', 'May 13, 2023', 'Mid', 'Do this task first');
 const task2 = new Task('Task 2', 'May 17, 2023', 'High', 'This task is urgent');
 const task3 = new Task('Task 3', 'May 28, 2023', 'Low', 'Not a priority');
 const task4 = new Task('Task 4', 'June 5, 2023', 'High', 'Needs to be completed before project deadline');
-const task5 = new Task('Task 5', 'June 25, 2023', 'Medium', 'Some urgency, but not critical');
+const task5 = new Task('Task 5', 'June 25, 2023', 'Mid', 'Some urgency, but not critical');
 const task6 = new Task('Task 6', 'July 7, 2023', 'High', 'Critical task for project success');
 const task7 = new Task('Task 7', 'August 1, 2023', 'Low', 'Not a priority, but needs to be done eventually');
-const task8 = new Task('Task 8', 'August 20, 2023', 'Medium', 'Some urgency, but can wait');
+const task8 = new Task('Task 8', 'August 20, 2023', 'Mid', 'Some urgency, but can wait');
 
 // Add tasks to projects
 project1.addTask(task1);
