@@ -49,12 +49,23 @@ table {
 @@@@@@@@@@@@@@@@@
 */
 
+@font-face {
+	font-family: 'bangers';
+	src: url(Bangers-Regular.woff2);
+}
+
+button {
+	height: 10vw;
+	width: 35vw;
+	font-size: 3rem;
+}
 
 #content {
 	display: flex;
 	flex-direction: column;
 	margin: 5vw;
 	z-index: 7;
+	align-items: center;
 }
 #listItem {
     font-size: 2rem;
@@ -63,6 +74,7 @@ table {
 	border: 3px solid green;
 	background-color: rgb(227, 230, 80);
 	margin: 5vw;
+	width: 70vw;
 }
 
 #taskListItem {
@@ -70,6 +82,14 @@ table {
     font-weight: 500;
     color: blueviolet;
     margin-left: 2rem;
+}
+
+h1 {
+	font-size: 13rem;
+	font-weight: 500;
+	color: rgb(39, 39, 173);
+	text-align: center;
+	font-family: 'bangers';
 }
 
 h3 {
@@ -94,6 +114,7 @@ h3 {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	z-index: 9;
+	width: 80vw;
 
 }
 #editProjectForm {
@@ -106,7 +127,7 @@ h3 {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	z-index: 9;
-
+	width: 80vw;
 }
 
 #overlay {
@@ -130,4 +151,12 @@ div[id^=taskDiv] {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-column: span 2;
+}
+
+.addProjectButton {
+	width: 70vw;
+	height: 10vw;
+	background-color: rgb(143, 77, 77);
+	border: 3px solid greenyellow;
+
 }

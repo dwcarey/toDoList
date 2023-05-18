@@ -2,11 +2,16 @@ import { ToDoList } from "./toDoList";
 import { Project } from "./projects";
 import { projectListLoad } from "./projectListLoad";
 import { createTaskForm} from './createTaskForm';
+import { isDate } from 'date-fns'
+import { isValid } from 'date-fns'
 
 function createProjectForm(toDoList) {
     let editing = false;
     let tasksCounter = 0;
     const content = document.getElementById('content');
+
+    const overlay = document.createElement('div');
+    overlay.id = 'overlay';
     const projectForm = document.createElement('form');
     projectForm.id = 'projectForm';
 
@@ -21,6 +26,7 @@ function createProjectForm(toDoList) {
     closeButton.type = 'button';
     closeButton.addEventListener('click', () => {
         projectForm.remove();
+        overlay.remove();
     })
 
     //project name label and 25 char text input
@@ -59,10 +65,19 @@ function createProjectForm(toDoList) {
     submitButton.type = 'submit';
     submitButton.addEventListener('click', (e) =>{
         e.preventDefault();
-        const newProject = new Project(projectNameInput.value, projectDueInput.value);
-        toDoList.addProject(newProject);
-        projectForm.remove();
-        projectListLoad(toDoList);
+
+        const projectDueInputData = projectDueInput.value;
+
+        if(isValid(new Date(projectDueInputData))){
+            const newProject = new Project(projectNameInput.value, projectDueInput.value);
+            toDoList.addProject(newProject);
+            projectForm.remove();
+            overlay.remove();
+            projectListLoad(toDoList);
+            
+        } else { // do nothing
+        }
+
     })
 
     //append this append that
@@ -75,6 +90,7 @@ function createProjectForm(toDoList) {
     projectForm.appendChild(addTaskButton);
     projectForm.appendChild(submitButton);
 
+    content.appendChild(overlay);
     content.appendChild(projectForm);
 
 }

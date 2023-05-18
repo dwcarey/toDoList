@@ -5,6 +5,7 @@ import { Task } from './tasks';
 import { Project } from './projects';
 
 function firstPageLoad() {
+
 const toDoList = new ToDoList();
 
 // Create new projects

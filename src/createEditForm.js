@@ -5,12 +5,16 @@ import { projectListLoad } from "./projectListLoad";
 import { createTaskForm} from './createTaskForm';
 
 function createEditForm(projectIndex, toDoList) {
+    
     const selectedProject = toDoList.projects[projectIndex];
     let editing = true;
 
     let tasksCounter = selectedProject.tasks.length;
 
     const content = document.getElementById('content');
+    const overlay = document.createElement('div');
+    overlay.id = 'overlay';
+    content.appendChild(overlay);
     const projectForm = document.createElement('form');
     projectForm.id = 'editProjectForm';
 
@@ -25,6 +29,7 @@ function createEditForm(projectIndex, toDoList) {
     closeButton.type = 'button';
     closeButton.addEventListener('click', () => {
         projectForm.remove();
+        overlay.remove();
     })
 
     //project name label and 25 char text input
@@ -36,6 +41,7 @@ function createEditForm(projectIndex, toDoList) {
     projectNameInput.maxLength = 25;
     projectNameInput.id = 'projectNameInput';
     projectNameInput.value = selectedProject.name;
+    projectNameInput.required = true;
 
     //project due date label and date input
     const projectDueLabel = document.createElement('label');
@@ -49,6 +55,7 @@ function createEditForm(projectIndex, toDoList) {
     const year = selectedProject.due.split('/')[2];
     const newProjectDate = `${year}-${month}-${day}`;
     projectDueInput.value = newProjectDate;
+    projectDueInput.required = true;
 
     //add task button, will generate a task form
     const addTaskButton = document.createElement('button');
@@ -82,6 +89,7 @@ function createEditForm(projectIndex, toDoList) {
         toDoList.editProject(projectIndex, newProject);
         projectForm.remove();
         editing = false;
+        overlay.remove();
         projectListLoad(toDoList);
     })
     projectForm.appendChild(submitButton);
@@ -123,6 +131,7 @@ function createEditForm(projectIndex, toDoList) {
             }
             toDoList.editProject(projectIndex, newProject);
             projectForm.remove();
+            overlay.remove();
             projectListLoad(toDoList);
             tasksCounter = 0;
     
@@ -147,6 +156,7 @@ function createEditForm(projectIndex, toDoList) {
         taskNameInput.type = 'text';
         taskNameInput.id = `taskName-${i+1}`;
         taskNameInput.value = selectedProject.tasks[i].name;
+        taskNameInput.required=true;
     
         //taskduedate date with label, taskcounter
         const taskDueLabel = document.createElement('label');
@@ -159,6 +169,7 @@ function createEditForm(projectIndex, toDoList) {
         const yearT = selectedProject.tasks[i].due.split('/')[2];
         const newTaskDate = `${yearT}-${monthT}-${dayT}`;
         taskDueInput.value = newTaskDate;
+        taskDueInput.required = true;
     
         //taskpriority dropdown low mid high
         const taskPriorityLabel = document.createElement('label');
@@ -180,6 +191,7 @@ function createEditForm(projectIndex, toDoList) {
         taskPriorityInput.appendChild(midOption);
         taskPriorityInput.appendChild(highOption);
         taskPriorityInput.value = `${selectedProject.tasks[i].priority}`;
+        taskPriorityInput.required = true;
 
         //tasknotes textarea with label
         const taskNotesLabel = document.createElement('label');
@@ -189,6 +201,7 @@ function createEditForm(projectIndex, toDoList) {
         taskNotesInput.maxLength = 100;
         taskNotesInput.id = `taskNote-${i+1}`;
         taskNotesInput.value = selectedProject.tasks[i].notes;
+        taskNotesInput.required = true;
     
 
     

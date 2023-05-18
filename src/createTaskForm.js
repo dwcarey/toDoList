@@ -85,6 +85,7 @@ function createTaskForm(toDoList, tasksCounter, editing, projectIndex) {
     const taskNameInput = document.createElement('input');
     taskNameInput.type = 'text';
     taskNameInput.id = `taskName-${tasksCounter}`;
+    taskNameInput.required=true;
 
     //taskduedate date with label, taskcounter
     const taskDueLabel = document.createElement('label');
@@ -92,6 +93,7 @@ function createTaskForm(toDoList, tasksCounter, editing, projectIndex) {
     const taskDueInput = document.createElement('input');
     taskDueInput.type = 'date';
     taskDueInput.id = `taskDueInput-${tasksCounter}`;
+    taskDueInput.required=true;
 
     //taskpriority dropdown low mid high
     const taskPriorityLabel = document.createElement('label');
@@ -111,6 +113,7 @@ function createTaskForm(toDoList, tasksCounter, editing, projectIndex) {
     taskPriorityInput.appendChild(lowOption);
     taskPriorityInput.appendChild(midOption);
     taskPriorityInput.appendChild(highOption);
+    taskPriorityInput.required=true;
 
     //tasknotes textarea with label
     const taskNotesLabel = document.createElement('label');
@@ -119,7 +122,7 @@ function createTaskForm(toDoList, tasksCounter, editing, projectIndex) {
     taskNotesInput.type = 'textarea';
     taskNotesInput.maxLength = 100;
     taskNotesInput.id = `taskNote-${tasksCounter}`;
-    taskNameInput.value = '';
+    taskNotesInput.required = true;
 
     //append this append that
     taskForm.appendChild(taskNameLabel);

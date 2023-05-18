@@ -5,6 +5,9 @@ import { createEditForm } from './createEditForm';
 function projectListLoad(toDoList) {
   const content = document.getElementById('content');
   content.replaceChildren();
+  const headingText = document.createElement('h1');
+  headingText.textContent = 'To Do List';
+  content.appendChild(headingText);  
   const addProjectButton = document.createElement('button');
   const projectsList = document.createElement('ul');
 
