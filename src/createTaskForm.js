@@ -3,16 +3,15 @@ import { Project } from "./projects";
 import { Task } from "./tasks";
 import { projectListLoad } from "./projectListLoad";
 
-function createTaskForm(toDoList, tasksCounter, editing) {
+function createTaskForm(toDoList, tasksCounter, editing, projectIndex) {
         let projectForm = document.getElementById('editProjectForm');
 
     const taskForm = document.createElement('form');
     taskForm.id = `taskForm-${tasksCounter}`;
     taskForm.classList.add('taskForm');
 
-    if (editing===false){
-        projectForm = document.getElementById('projectForm');
-        projectForm = document.getElementById('projectForm');
+
+
     const oldSubmitButton = document.getElementById('submitButton');
     const oldTaskSubmitButton = document.getElementById('taskSubmitButton');
 
@@ -21,14 +20,22 @@ function createTaskForm(toDoList, tasksCounter, editing) {
     taskSubmitButton.textContent = 'Submit';
     taskSubmitButton.id = 'taskSubmitButton';
 
-    if (oldSubmitButton) {
+    if ((oldSubmitButton) && (!projectForm)) {
+        projectForm = document.getElementById('projectForm');
         projectForm.replaceChild(taskSubmitButton, oldSubmitButton);
     }
-    else if (oldTaskSubmitButton) {
+    else if ((oldSubmitButton) && (projectForm)) {
+        projectForm.replaceChild(taskSubmitButton, oldSubmitButton);
+    }
+    else if ((oldTaskSubmitButton) && (projectForm)) {
         projectForm.replaceChild(taskSubmitButton, oldTaskSubmitButton);
-    }}
+    }
 
-    if (editing === false){
+    else if ((oldTaskSubmitButton) && (!projectForm)){
+        projectForm = document.getElementById('projectForm');
+        projectForm.replaceChild(taskSubmitButton, oldTaskSubmitButton);
+    }
+
     //new submit button to handle both project and task creation
     taskSubmitButton.addEventListener('click', (e) => {
         e.preventDefault();
@@ -41,6 +48,7 @@ function createTaskForm(toDoList, tasksCounter, editing) {
 
 
         const newProject = new Project(projectNameInput, newProjectDate);
+
 
         for (let i = 1; i <= tasksCounter; i+=1) {
             const taskNameData = document.getElementById(`taskName-${i}`).value;
@@ -59,14 +67,18 @@ function createTaskForm(toDoList, tasksCounter, editing) {
                 taskNotesData)
             newProject.addTask(newTask);
         }
+
+        if (editing === false){
         toDoList.addProject(newProject);
         projectForm.remove();
+        } else if (editing === true) {
+    
+        toDoList.editProject(projectIndex, newProject)
+        projectForm.remove();
+        }
         projectListLoad(toDoList);
     })
 
-
-
-}
     //taskname text max25 with label, id'ed with taskscounter
     const taskNameLabel = document.createElement('label');
     taskNameLabel.textContent = `Task ${tasksCounter} Name:`;
@@ -107,6 +119,7 @@ function createTaskForm(toDoList, tasksCounter, editing) {
     taskNotesInput.type = 'textarea';
     taskNotesInput.maxLength = 100;
     taskNotesInput.id = `taskNote-${tasksCounter}`;
+    taskNameInput.value = '';
 
     //append this append that
     taskForm.appendChild(taskNameLabel);

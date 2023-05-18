@@ -56,9 +56,7 @@ function createEditForm(projectIndex, toDoList) {
     addTaskButton.type = 'button';
     addTaskButton.addEventListener('click', (e) => {
         tasksCounter += 1;
-        console.log(editing);
-
-        createTaskForm(toDoList, tasksCounter, editing);
+        createTaskForm(toDoList, tasksCounter, editing, projectIndex);
     })
 
 
@@ -77,6 +75,7 @@ function createEditForm(projectIndex, toDoList) {
     const submitButton = document.createElement('button');
     submitButton.textContent = 'Submit';
     submitButton.id = 'submitButton';
+    submitButton.type = 'submit';
     submitButton.addEventListener('click', (e) =>{
         e.preventDefault();
         const newProject = new Project(projectNameInput.value, projectDueInput.value);
@@ -92,8 +91,6 @@ function createEditForm(projectIndex, toDoList) {
         taskSubmitButton.type = 'submit';
         taskSubmitButton.id = 'taskSubmitButton';
         taskSubmitButton.textContent = 'Submit';
-        // eslint-disable-next-line no-loop-func
-        console.log(taskSubmitButton);
         taskSubmitButton.addEventListener('click', (e) => {
             e.preventDefault();
             
@@ -108,10 +105,7 @@ function createEditForm(projectIndex, toDoList) {
             const newProject = new Project(editProjectNameInput, newProjectDateP);
     
             for (let j = 1; j <= tasksCounter; j+=1) {
-                console.log(j);
-                console.log(tasksCounter);
                 const taskNameData = document.getElementById(`taskName-${j}`).value;
-                console.log(taskNameData);
                 const taskDueData = document.getElementById(`taskDueInput-${j}`).value;
                 const taskPriorityData = document.getElementById(`taskPriority-${j}`).value;
                 const taskNotesData = document.getElementById(`taskNote-${j}`).value;

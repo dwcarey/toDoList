@@ -31,6 +31,7 @@ function createProjectForm(toDoList) {
     projectNameInput.type = 'text';
     projectNameInput.maxLength = 25;
     projectNameInput.id = 'projectNameInput';
+    projectNameInput.required = true;
 
     //project due date label and date input
     const projectDueLabel = document.createElement('label');
@@ -39,6 +40,8 @@ function createProjectForm(toDoList) {
     const projectDueInput = document.createElement('input');
     projectDueInput.type = 'date';
     projectDueInput.id = 'projectDueInput';
+    projectDueInput.required = true;
+
 
     //add task button, will generate a task form
     const addTaskButton = document.createElement('button');
@@ -53,6 +56,7 @@ function createProjectForm(toDoList) {
     const submitButton = document.createElement('button');
     submitButton.textContent = 'Submit';
     submitButton.id = 'submitButton';
+    submitButton.type = 'submit';
     submitButton.addEventListener('click', (e) =>{
         e.preventDefault();
         const newProject = new Project(projectNameInput.value, projectDueInput.value);
