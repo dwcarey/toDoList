@@ -56,8 +56,13 @@ table {
 
 button {
 	height: 10vw;
-	width: 35vw;
-	font-size: 3rem;
+	width: 30vw;
+	font-size: 2.5rem;
+	align-self: center;
+	justify-self: center;
+	margin: 1rem;
+	border-radius: 1.5rem;
+	border: 0;
 }
 
 #content {
@@ -68,41 +73,55 @@ button {
 	align-items: center;
 }
 #listItem {
-    font-size: 2rem;
-    font-weight: 800;
-    color: blue;
+
 	border: 3px solid green;
 	background-color: rgb(227, 230, 80);
 	margin: 5vw;
-	width: 70vw;
+	width: 85vw;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	border-radius: 3rem;	
+
 }
 
 #taskListItem {
-    font-size: 1rem;
+    font-size: 3rem;
     font-weight: 500;
     color: blueviolet;
-    margin-left: 2rem;
+	margin-left: 2.5rem;
+
+
+
+}
+
+h2 {
+    font-size: 4rem;
+    font-weight: 800;
+    color: blue;
+	grid-column: span 2;
+	margin-left: 2rem;
+	text-align: center;
 }
 
 h1 {
 	font-size: 13rem;
 	font-weight: 500;
 	color: rgb(39, 39, 173);
+	margin-left: 1rem;
 	text-align: center;
 	font-family: 'bangers';
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 4rem;
     font-weight: 650;
     color: brown;
 	margin-left: 1rem;
+	align-self: center;
+	justify-self: center;
+
 }
 
-#projectContainer {
-	border: 3px solid red;
-	background-color: aqua;
-}
 
 #projectForm {
 	position: fixed;
@@ -154,9 +173,27 @@ div[id^=taskDiv] {
 }
 
 .addProjectButton {
-	width: 70vw;
+	width: 85vw;
 	height: 10vw;
 	background-color: rgb(143, 77, 77);
 	border: 3px solid greenyellow;
 
+}
+
+#taskListMain {
+	grid-column: span 2;
+	display: grid;
+	align-self: center;
+	justify-self: center;
+	width: 80vw;
+	margin: 1vw;
+	grid-template-columns: 1fr 1fr;
+	border: 1px solid orangered;
+	background-color: aquamarine;
+	border-radius: 2rem;
+	padding: 1vw;
+}
+
+#taskListMain>li{
+	grid-column: span 2;
 }
