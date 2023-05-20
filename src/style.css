@@ -131,11 +131,28 @@ h3 {
 	border: 3px solid orangered;
 	background-color: rgb(141, 43, 165);
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 45vw 45vw;
 	z-index: 9;
-	width: 80vw;
+	width: 90vw;
+	border-radius: 3rem;
+	padding: 1rem;
+	max-height: 90vh;
+	overflow-y: auto;
+}
+
+#projectForm>label{
+	font-size: 3rem;
+	align-self: center;
+	justify-self: center;
+}
+
+#projectForm>input{
+	font-size: 3rem;
+	border-radius: 1rem;
+	padding: 1rem;
 
 }
+
 #editProjectForm {
 	position: fixed;
 	top: 50%;
@@ -144,9 +161,26 @@ h3 {
 	border: 3px solid orangered;
 	background-color: rgb(141, 43, 165);
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 45vw 45vw;
 	z-index: 9;
-	width: 80vw;
+	width: 90vw;
+	border-radius: 3rem;
+	padding: 1rem;
+	max-height: 90vh;
+	overflow-y: auto;
+}
+
+#editProjectForm>label{
+	font-size: 3rem;
+	align-self: center;
+	justify-self: center;
+}
+
+#editProjectForm>input{
+	font-size: 3rem;
+	border-radius: 1rem;
+	padding: 1rem;
+
 }
 
 #overlay {
@@ -168,8 +202,32 @@ div[id^=taskDiv] {
 
 .taskForm {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 45vw 45vw;
 	grid-column: span 2;
+	width: 90vw;
+	border-radius: 1rem;
+	border: 3px solid yellow;
+	background-color: rgb(95, 95, 173);
+	margin-bottom: 1rem;
+}
+
+.taskForm>label{
+	font-size: 3rem;
+	align-self: center;
+	justify-self: center;
+}
+
+.taskForm>input{
+	font-size: 3rem;
+	border-radius: 1rem;
+	padding: 1rem;
+
+}
+.taskForm>select{
+	font-size: 3rem;
+	border-radius: 1rem;
+	padding: 1rem;
+
 }
 
 .addProjectButton {
