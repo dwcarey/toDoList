@@ -74,8 +74,14 @@ table {
 	src: url(Bangers-Regular.woff2);
 }
 
+@font-face {
+	font-family: 'acme';
+	src: url(Acme-Regular.woff2);
+}
+
 html {
 	background-color: var(--mainBG);
+	font-family: 'acme';
 }
 
 button {
@@ -83,12 +89,15 @@ button {
 	width: 30vw;
 	font-size: 2.7rem;
 	align-self: center;
+	font-family: 'acme';
 	justify-self: center;
 	margin: 1rem;
 	border-radius: 1.5rem;
 	border: 0;
 	background-color: var(--buttonColour);
 	color: var(--textColour);
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
 }
 
 button:hover {
@@ -112,7 +121,7 @@ button:hover {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	border-radius: 2rem;	
-
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 #taskListItem {
@@ -134,11 +143,11 @@ h2 {
 
 h1 {
 	font-size: 13rem;
-	font-weight: 500;
+	text-shadow: 4px 5px 8px rgba(75, 30, 0, 0.8);
 	color: #eb622c;
 	margin-left: 1rem;
 	text-align: center;
-	font-family: 'bangers';
+	font-family: 'acme';
 }
 
 h3 {
@@ -166,6 +175,8 @@ h3 {
 	padding: 1rem;
 	max-height: 90vh;
 	overflow-y: auto;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
 }
 
 #projectForm>label{
@@ -249,6 +260,8 @@ div[id^=taskDiv] {
 	padding: 1rem;
 
 }
+
+
 .taskForm>select{
 	font-size: 3rem;
 	border-radius: 1rem;
@@ -260,7 +273,13 @@ div[id^=taskDiv] {
 	width: 85vw;
 	height: 10vw;
 	background-color: var(--buttonColour);
+	font-size: 5vw;
+}
 
+.addProjectButton:hover{
+	background-color: var(--bgColour);
+	color: #380a3f;
+	transition: 0.8s;
 }
 
 #taskListMain {
@@ -274,6 +293,7 @@ div[id^=taskDiv] {
 	background-color: var(--taskBG);
 	border-radius: 2rem;
 	padding: 1vw;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 #taskListMain>li{
