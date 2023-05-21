@@ -282,35 +282,64 @@ div[id^=taskDiv] {
 
 
 @media only screen and (min-width: 1000px) {
-	#content>ul{
+	h1 {
+
+		text-align: center;
+		font-size: 13vw;
+	}
+	h2 {
+		grid-column: span 1;
+		font-size: 2.8vw;
+		justify-self: center;
+		align-self: center;
+	}
+
+	h3{ 
+		font-size: 2.5vw;
+	}
+
+	button {
+		height: 4vw;
+		font-size: 2vw;
+		width: 18vw;
+	}
+
+	#content {
 		display: grid;
-		grid-template-columns: 45vw 45vw;
-		grid-template-rows: min-content;
+		grid-template-columns: 60vw 30vw;
+		margin: 2vw;
+		margin-top: 1vw;
+		align-items: unset;
+	}
+
+	#addProjectButton {
+		width: 29.9vw;
 	}
 
 	#listItem {
 		margin: 2.5vw;
-		grid-column: span 1;
-		width: 42.5vw;
+		width: 90vw;
+		display: grid;
+		grid-template-columns: repeat(4, 22.5vw);
 		border-radius: 2rem;	
 	
 	}
-	button {
-		height: 5vw;
-		width: 15vw;
-		font-size: 1.5rem;
+
+	#taskListMain {
+		grid-column: span 4;
+		width: 85vw;
+		grid-template-columns: repeat(4, 21.25vw);
 	}
 
+	#taskListMain>li{
+		grid-column: span 1;
+		font-size: 2vw;
+		align-self: center;
+		justify-self: center;
+	}
 
-#taskListMain {
-
-	width: 40vw;
-	margin: 0;
-
-}
-
-h2{
-	font-size: 2rem;	
-}
-
+	#taskListItem:last-child {
+		grid-column: span 4;
+		justify-self: start;
+	}
   }
