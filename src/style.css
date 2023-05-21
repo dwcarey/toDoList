@@ -49,20 +49,52 @@ table {
 @@@@@@@@@@@@@@@@@
 */
 
+/*:root {
+	--textColour: #00008B;
+	--borderColour: #0000FF;
+	--bgColour: #0080FF;
+	--buttonColour: #ADD8E6;
+	--taskBG: #568df5;
+}*/
+
+
+:root {
+	--textColour: #380a3f;
+	--borderColour: #c71e59;
+	--bgColour: #eb622c;
+	--buttonColour: #c71e59;
+	--taskBG: #fbab3a;
+	--mainBG: #4e1b56;
+  }
+  
+  
+
 @font-face {
 	font-family: 'bangers';
 	src: url(Bangers-Regular.woff2);
 }
 
+html {
+	background-color: var(--mainBG);
+}
+
 button {
 	height: 10vw;
 	width: 30vw;
-	font-size: 2.5rem;
+	font-size: 2.7rem;
 	align-self: center;
 	justify-self: center;
 	margin: 1rem;
 	border-radius: 1.5rem;
 	border: 0;
+	background-color: var(--buttonColour);
+	color: var(--textColour);
+}
+
+button:hover {
+	background-color: #380a3f;
+	color: #c71e59;
+	transition: 0.5s;
 }
 
 #content {
@@ -74,30 +106,27 @@ button {
 }
 #listItem {
 
-	border: 3px solid green;
-	background-color: rgb(227, 230, 80);
+	background-color: var(--bgColour);
 	margin: 5vw;
 	width: 85vw;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	border-radius: 3rem;	
+	border-radius: 2rem;	
 
 }
 
 #taskListItem {
     font-size: 3rem;
     font-weight: 500;
-    color: blueviolet;
+    color: var(--textColour);
 	margin-left: 2.5rem;
-
-
 
 }
 
 h2 {
     font-size: 4rem;
     font-weight: 800;
-    color: blue;
+    color: var(--textColour);
 	grid-column: span 2;
 	margin-left: 2rem;
 	text-align: center;
@@ -106,7 +135,7 @@ h2 {
 h1 {
 	font-size: 13rem;
 	font-weight: 500;
-	color: rgb(39, 39, 173);
+	color: #eb622c;
 	margin-left: 1rem;
 	text-align: center;
 	font-family: 'bangers';
@@ -115,7 +144,7 @@ h1 {
 h3 {
     font-size: 4rem;
     font-weight: 650;
-    color: brown;
+    color: var(--textColour);
 	margin-left: 1rem;
 	align-self: center;
 	justify-self: center;
@@ -128,8 +157,7 @@ h3 {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	border: 3px solid orangered;
-	background-color: rgb(141, 43, 165);
+	background-color: var(--bgColour);
 	display: grid;
 	grid-template-columns: 45vw 45vw;
 	z-index: 9;
@@ -158,8 +186,7 @@ h3 {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	border: 3px solid orangered;
-	background-color: rgb(141, 43, 165);
+	background-color: var(--bgColour);
 	display: grid;
 	grid-template-columns: 45vw 45vw;
 	z-index: 9;
@@ -206,8 +233,7 @@ div[id^=taskDiv] {
 	grid-column: span 2;
 	width: 90vw;
 	border-radius: 1rem;
-	border: 3px solid yellow;
-	background-color: rgb(95, 95, 173);
+	background-color: var(--taskBG);
 	margin-bottom: 1rem;
 }
 
@@ -233,8 +259,7 @@ div[id^=taskDiv] {
 .addProjectButton {
 	width: 85vw;
 	height: 10vw;
-	background-color: rgb(143, 77, 77);
-	border: 3px solid greenyellow;
+	background-color: var(--buttonColour);
 
 }
 
@@ -246,8 +271,7 @@ div[id^=taskDiv] {
 	width: 80vw;
 	margin: 1vw;
 	grid-template-columns: 1fr 1fr;
-	border: 1px solid orangered;
-	background-color: aquamarine;
+	background-color: var(--taskBG);
 	border-radius: 2rem;
 	padding: 1vw;
 }
@@ -255,3 +279,38 @@ div[id^=taskDiv] {
 #taskListMain>li{
 	grid-column: span 2;
 }
+
+
+@media only screen and (min-width: 1000px) {
+	#content>ul{
+		display: grid;
+		grid-template-columns: 45vw 45vw;
+		grid-template-rows: min-content;
+	}
+
+	#listItem {
+		margin: 2.5vw;
+		grid-column: span 1;
+		width: 42.5vw;
+		border-radius: 2rem;	
+	
+	}
+	button {
+		height: 5vw;
+		width: 15vw;
+		font-size: 1.5rem;
+	}
+
+
+#taskListMain {
+
+	width: 40vw;
+	margin: 0;
+
+}
+
+h2{
+	font-size: 2rem;	
+}
+
+  }
