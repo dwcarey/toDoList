@@ -66,13 +66,6 @@ table {
 	--taskBG: #fbab3a;
 	--mainBG: #4e1b56;
   }
-  
-  
-
-@font-face {
-	font-family: 'bangers';
-	src: url(Bangers-Regular.woff2);
-}
 
 @font-face {
 	font-family: 'acme';
